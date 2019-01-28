@@ -3,6 +3,9 @@ var path = require('path');
 var nforce = require('nforce');
 var hbs = require('hbs');
 
+
+require('dotenv').config()
+
 var app = express();
 
 app.set('view engine', 'hbs');
@@ -33,7 +36,7 @@ app.get('/', function(req, res) {
       // authenticated
       org.authenticate(req.query, function(err) {
         if (!err) {
-          org.query({ query: 'SELECT id, name, type, industry, rating FROM Account' }, function(err, results) {
+          org.query({ query: 'SELECT id, name FROM LEAD' }, function(err, results) {
             if (!err) {
               res.render('index', {records: results.records});
             }
