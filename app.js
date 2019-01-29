@@ -30,7 +30,7 @@ app.get('/', function(req, res) {
       clientSecret: process.env.CONSUMER_SECRET,
       redirectUri: oauthCallbackUrl(req),
       mode: 'single',
-      autoRefresh: true 
+      autoRefresh: true
     });
 
     if (req.query.code !== undefined) {
@@ -39,6 +39,7 @@ app.get('/', function(req, res) {
         if (!err) {
           org.query({ query: 'SELECT id, name FROM LEAD' }, function(err, results) {
             if (!err) {
+              console.log(results)
               res.render('index', {records: results.records});
             }
             else {
