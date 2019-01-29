@@ -29,7 +29,8 @@ app.get('/', function(req, res) {
       clientId: process.env.CONSUMER_KEY,
       clientSecret: process.env.CONSUMER_SECRET,
       redirectUri: oauthCallbackUrl(req),
-      mode: 'single'
+      mode: 'single',
+      autoRefresh: true 
     });
 
     if (req.query.code !== undefined) {
